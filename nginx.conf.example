@@ -1,0 +1,58 @@
+# Nginx Configuration for MaadoFeelRate
+# Copy this to /etc/nginx/sites-available/maadofeelrate
+
+server {
+    listen 80;
+    server_name YOUR_DOMAIN_OR_IP;  # Replace with your domain or IP
+
+    # Frontend (React build)
+    location / {
+        root /var/www/maadofeelrate/frontend/build;
+        try_files $uri $uri/ /index.html;
+        index index.html;
+        
+        # Cache static assets
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+
+    # Backend API
+    location /api {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 300s;
+        proxy_connect_timeout 75s;
+    }
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+}
+
+# Redirect HTTP to HTTPS (uncomment after SSL setup)
+# server {
+#     listen 80;
+#     server_name YOUR_DOMAIN;
+#     return 301 https://$server_name$request_uri;
+# }
+#
+# server {
+#     listen 443 ssl http2;
+#     server_name YOUR_DOMAIN;
+#
+#     ssl_certificate /etc/letsencrypt/live/YOUR_DOMAIN/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/YOUR_DOMAIN/privkey.pem;
+#
+#     # ... rest of configuration above
+# }
+
