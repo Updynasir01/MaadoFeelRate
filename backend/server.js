@@ -13,16 +13,18 @@ app.use(express.json());
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/maadofeelrate';
 mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000, // 30 seconds for Atlas
+  socketTimeoutMS: 45000,
 })
-.then(() => console.log('✅ MongoDB Connected Successfully'))
+.then(() => {
+  console.log('✅ MongoDB Connected Successfully');
+  console.log(`📊 Database: ${mongoose.connection.name}`);
+})
 .catch(err => console.error('❌ MongoDB Connection Error:', err));
-console.log(`📊 Database: ${mongoose.connection.name}`);
 
-app.get('/', (req,res)=>{
-  res.json({message: 'MaadoFeelRate API is running'});
-})
+app.get('/', (req, res) => {
+  res.json({ message: 'MaadoFeelRate API is running' });
+});
 
 // Routes
 app.use('/api/feedback', require('./routes/feedback'));
