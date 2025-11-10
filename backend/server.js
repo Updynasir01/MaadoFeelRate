@@ -20,6 +20,10 @@ mongoose.connect(MONGODB_URI, {
 .catch(err => console.error('❌ MongoDB Connection Error:', err));
 console.log(`📊 Database: ${mongoose.connection.name}`);
 
+app.get('/', (req,res)=>{
+  res.json({message: 'MaadoFeelRate API is running'});
+})
+
 // Routes
 app.use('/api/feedback', require('./routes/feedback'));
 app.use('/api/analytics', require('./routes/analytics'));
