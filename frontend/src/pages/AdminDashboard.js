@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getAnalytics, getFeedback } from '../services/api';
@@ -35,7 +35,6 @@ const AdminDashboard = () => {
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [period, setPeriod] = useState('all');
-  const [recentComments, setRecentComments] = useState([]);
   const [allFeedback, setAllFeedback] = useState([]);
 
   const handleLogout = () => {
@@ -43,11 +42,7 @@ const AdminDashboard = () => {
     navigate('/login');
   };
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [period]);
-
-  const fetchAnalytics = () => {
+  const fetchAnalytics = useCallback(() => {
     setLoading(true);
     Promise.all([
       getAnalytics({ period }),
@@ -61,12 +56,10 @@ const AdminDashboard = () => {
         if (feedbackRes && feedbackRes.success) {
           const feedbackData = feedbackRes.data || [];
           setAllFeedback(feedbackData);
-          setRecentComments(feedbackData.slice(0, 10));
         } else {
           // Still try to get feedback even if structure is different
           const feedbackData = Array.isArray(feedbackRes?.data) ? feedbackRes.data : (feedbackRes?.data?.data || []);
           setAllFeedback(feedbackData);
-          setRecentComments(feedbackData.slice(0, 10));
         }
       })
       .catch(error => {
@@ -75,7 +68,11 @@ const AdminDashboard = () => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, [period]);
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, [fetchAnalytics]);
 
   const getSentimentColor = (sentiment) => {
     switch (sentiment) {

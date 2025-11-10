@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MaadoFeelRate - Smart Feedback & Emotional Analytics for Restaurants",
   "main": "index.js",
+
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm run dev",
