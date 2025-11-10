@@ -18,7 +18,6 @@ mongoose.connect(MONGODB_URI, {
 })
 .then(() => console.log('✅ MongoDB Connected Successfully'))
 .catch(err => console.error('❌ MongoDB Connection Error:', err));
-console.log('✅ MongoDB Connected Successfully');
 console.log(`📊 Database: ${mongoose.connection.name}`);
 
 // Routes
