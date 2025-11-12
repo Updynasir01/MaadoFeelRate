@@ -14,7 +14,7 @@ const HomePage = () => {
         <div className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">M</div>
-            <span className="text-primary text-xl font-semibold font-display">Maado</span>
+            <span className="text-primary text-xl font-semibold font-display">MADO SOMALIA</span>
           </div>
           <div />
         </div>
@@ -24,7 +24,7 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center mb-10 fade-in">
             <div className="w-20 h-1 gradient-gold mx-auto mb-4 rounded-full"></div>
-            <h1 className="text-primary text-3xl sm:text-4xl font-semibold font-display text-center">Welcome to Maado Restaurant</h1>
+            <h1 className="text-primary text-3xl sm:text-4xl font-semibold font-display text-center">Welcome to MADO SOMALIA</h1>
             <div className="w-20 h-1 gradient-gold mx-auto mt-4 rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -34,7 +34,7 @@ const HomePage = () => {
               rel="noopener noreferrer"
               className="group border-2 border-accent bg-white rounded-2xl p-8 text-center card-luxury hover:shadow-luxury-lg transition-premium hover:-translate-y-1"
             >
-              <div className="text-primary text-2xl font-semibold mb-3 font-display">See Our Menu</div>
+              <div className="text-primary text-2xl font-semibold mb-3 font-display">Our Menu</div>
               <div className="text-4xl mb-4">🍽️</div>
               <div className="inline-flex items-center justify-center gap-2 text-primary font-medium">
                 <span>Open menu</span>

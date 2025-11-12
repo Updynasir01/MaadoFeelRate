@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    title: "MaadoFeelRate",
+    title: "MAdoFeelRate",
     subtitle: "Share your dining experience with us",
     description: "Your feedback helps us deliver exceptional service",
     foodQuality: "Food Quality",
@@ -21,15 +21,15 @@ export const translations = {
     submitError: "Failed to submit feedback. Please try again.",
   },
   so: {
-    title: "MaadoFeelRate",
-    subtitle: "Wadaag xaaladahaaga cuntada",
-    description: "Fikradahaagu waxay naga caawinayaan inaan bixino adeegga fiican",
+    title: "MadoFeelRate",
+    subtitle: "Nala Wadaag xaaladahaaga cuntada",
+    description: "Fikradahaagu waxay naga caawinayaan inaan bixino adeeg fiican",
     foodQuality: "Tayada Cuntada",
     service: "Fiicnaanta Adeegga",
     atmosphere: "Hawada & Deegaanka",
     additionalComments: "Fikrado Kale",
     optional: "(Ikhtiyaari ah)",
-    placeholder: "Waxaan jeclaan lahayn inaan maqalno wax ka badan hawshaada...",
+    placeholder: "Waxaan jeclaan lahayn inaan maqalno fikradahaaga...",
     submitFeedback: "Dir Fikradaha",
     submitting: "Waa la diri doonaa...",
     thankYou: "Mahadsanid!",
@@ -42,7 +42,7 @@ export const translations = {
     submitError: "Khalad ayaa dhacay markii la dirayo fikradaha. Fadlan mar kale isku day.",
   },
   tr: {
-    title: "MaadoFeelRate",
+    title: "MadoFeelRate",
     subtitle: "Yemeğinizle ilgili deneyiminizi bizimle paylaşın",
     description: "Geri bildiriminiz bize mükemmel hizmet sunmamıza yardımcı olur",
     foodQuality: "Yemek Kalitesi",
@@ -63,7 +63,7 @@ export const translations = {
     submitError: "Geri bildirim gönderilemedi. Lütfen tekrar deneyin.",
   },
   ar: {
-    title: "MaadoFeelRate",
+    title: "MadoFeelRate",
     subtitle: "شاركنا تجربتك في تناول الطعام",
     description: "ملاحظاتك تساعدنا على تقديم خدمة استثنائية",
     foodQuality: "جودة الطعام",
